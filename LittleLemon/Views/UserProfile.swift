@@ -160,14 +160,13 @@ struct UserProfile: View {
                     
                 }
                 
-                
             }.toolbar{
                 ToolbarItem(placement: .navigationBarLeading){
                     Image("Logo")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 200, height: 40)
-                        .padding(.horizontal, 40)
+                        .padding(.horizontal, 75)
                 }
             }
         }
@@ -178,7 +177,7 @@ struct UserProfile: View {
         UserDefaults.standard.set(lastName, forKey: "last_name_key")
         UserDefaults.standard.set(email, forKey: "email_key")
         UserDefaults.standard.set(phoneNumber, forKey: "phone_number_key")
-        //UserDefaults.standard.set(avatar, forKey: "avatar")
+     
         UserDefaults.standard.set(orderStatus, forKey: "orderStatus")
         UserDefaults.standard.set(passwordChanges, forKey: "passwordChanges")
         UserDefaults.standard.set(specialOffers, forKey: "specialOffers")
@@ -188,18 +187,16 @@ struct UserProfile: View {
 }
 
 
-
+// MARK: - Toggle styling
 struct iOSCheckboxToggleStyle: ToggleStyle {
     func makeBody(configuration: Configuration) -> some View {
-        // 1
+ 
         Button(action: {
             
-            // 2
             configuration.isOn.toggle()
             
         }, label: {
             HStack {
-                // 3
                 Image(systemName: configuration.isOn ? "checkmark.square" : "square")
                     .foregroundColor(configuration.isOn ? .green : .gray)
                 
@@ -208,7 +205,7 @@ struct iOSCheckboxToggleStyle: ToggleStyle {
         })
     }
 }
-
+// MARK: - Image picker
 struct ImagePicker: UIViewControllerRepresentable {
     @Binding var image: UIImage?
     
