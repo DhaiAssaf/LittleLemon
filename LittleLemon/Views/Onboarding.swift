@@ -20,7 +20,8 @@ struct Onboarding: View {
     @State private var lastName: String = ""
     @State private var email: String = ""
     @State private var phoneNumber: String = ""
-    
+    let customColor = Color(red: 0.286, green: 0.3686, blue: 0.3412)
+
     var body: some View {
         NavigationView{
             VStack{
@@ -44,7 +45,7 @@ struct Onboarding: View {
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
-                .background(Color(#colorLiteral(red: 0.2862745225, green: 0.3686274588, blue: 0.3411764801, alpha: 1)))
+                .background(customColor)
                 Spacer()
                 NavigationLink(destination: Home(), isActive: $isLoggedin){
                     EmptyView()
@@ -61,8 +62,8 @@ struct Onboarding: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     TextField("Phone Number*" , text: $phoneNumber )
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                                        .keyboardType(.phonePad)
-                                        
+                        .keyboardType(.phonePad)
+                    
                     Spacer()
                     Button("Register"){
                         if !firstName.isEmpty, !lastName.isEmpty, !email.isEmpty {
@@ -83,15 +84,15 @@ struct Onboarding: View {
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                     
                 } .padding()
-              Spacer()
+                Spacer()
             }
             .onAppear {
                 if UserDefaults.standard.bool(forKey: kIsLoggedIn) {
                     isLoggedin = true
                 }
             }
-                        
-                     
+            
+            
             
         }
     }
@@ -99,5 +100,5 @@ struct Onboarding: View {
 
 #Preview {
     Onboarding()
-       
+    
 }
